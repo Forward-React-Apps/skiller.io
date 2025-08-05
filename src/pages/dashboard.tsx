@@ -16,23 +16,10 @@ import { useNavigate } from "react-router"
 
 import type { Skill, SkillCategory } from "@/types/skill"
 
-// Mock categories
-const mockCategories: SkillCategory[] = [
-  { id: '1', name: 'Frontend Development', color: '#3B82F6' },
-  { id: '2', name: 'Backend Development', color: '#10B981' },
-  { id: '3', name: 'Programming Languages', color: '#F59E0B' },
-  { id: '4', name: 'Database', color: '#8B5CF6' },
-  { id: '5', name: 'Design', color: '#EF4444' },
-  { id: '6', name: 'DevOps', color: '#6B7280' },
-]
-
-// Temporary mock data for demonstration
-const mockSkills: Skill[] = []
-
 function Dashboard() {
   const navigate = useNavigate()
-  const [skills, setSkills] = useLocalStorage<Skill[]>('user-skills', mockSkills)
-  const [categories] = useLocalStorage<SkillCategory[]>('skill-categories', mockCategories)
+  const [skills, setSkills] = useLocalStorage<Skill[]>('user-skills', [])
+  const [categories] = useLocalStorage<SkillCategory[]>('skill-categories', [])
   
   // Filter and sort states
   const [searchTerm, setSearchTerm] = useLocalStorage<string>('skills-search', '')
