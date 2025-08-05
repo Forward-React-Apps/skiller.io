@@ -20,7 +20,7 @@ type AppBarProps = {
   }
 }
 
-export function AppBar({ onMenuClick, user }: AppBarProps) {
+export function AppBar({ onMenuClick }: AppBarProps) {
   const navigate = useNavigate()
   const location = useLocation()
 

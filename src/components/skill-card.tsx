@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Calendar, Edit, Eye, Target, CheckCircle2, Circle } from "lucide-react"
-import type { Skill, Milestone } from "@/types/skill"
+import type { Skill } from "@/types/skill"
 
 interface SkillCardProps {
   skill: Skill
