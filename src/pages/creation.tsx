@@ -15,6 +15,7 @@ import {
 import { useLocalStorage } from "@/hooks/useLocalStorage"
 import { Plus, Trash2, Save, ArrowLeft, Target, Calendar, BookOpen, Palette } from "lucide-react"
 import type { Skill, SkillCategory, Milestone } from "@/types/skill"
+import { CustomAlertDialog } from "../components/alert-dialog"
 
 // Mock categories (same as dashboard)
 const mockCategories: SkillCategory[] = [
@@ -181,27 +182,42 @@ function Creation() {
     navigate('/')
   }
 
+  const handleDelete = () => {
+    if (!editingSkill) return
+    // add a prompt
+
+    setSkills(prev => prev.filter(skill => skill.id !== editingSkill.id))
+    navigate('/')
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <AppBar />
-      
+
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-8">
-          <Button variant="ghost" size="icon" onClick={handleCancel}>
-            <ArrowLeft className="h-4 w-4" />
-          </Button>
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">
-              {isEditing ? 'Edit Skill' : 'Create New Skill'}
-            </h1>
-            <p className="text-muted-foreground mt-2">
-              {isEditing 
-                ? 'Update your skill details and milestones'
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" onClick={handleCancel}>
+              <ArrowLeft className="h-4 w-4" />
+            </Button>
+            <div>
+              <h1 className="text-3xl font-bold tracking-tight">
+                {isEditing ? 'Edit Skill' : 'Create New Skill'}
+              </h1>
+              <p className="text-muted-foreground mt-2">
+                {isEditing 
+                  ? 'Update your skill details and milestones'
                 : 'Define what you want to learn and set your learning milestones'
               }
             </p>
+            </div>
           </div>
+          {isEditing && (
+            <CustomAlertDialog
+              onConfirm={handleDelete}
+              onCancel={() => {}} />
+          )}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

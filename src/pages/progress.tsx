@@ -14,6 +14,7 @@ import {
   CheckCircle2
 } from "lucide-react"
 import type { Skill, SkillCategory } from "@/types/skill"
+import { StatisticCard } from "@/components/statistic-card"
 
 // Mock categories (same as dashboard)
 const mockCategories: SkillCategory[] = [
@@ -253,57 +254,11 @@ function Progress() {
 
         {/* Statistics Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Skills</CardTitle>
-              <BookOpen className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{totalSkills}</div>
-              <p className="text-xs text-muted-foreground">
-                Skills in your learning path
-              </p>
-            </CardContent>
-          </Card>
+          <StatisticCard text="Total Skills" icon={<BookOpen className="h-4 w-4 text-muted-foreground" />} value={totalSkills} description="Skills in your learning path" />
+          <StatisticCard text="Completed Skills" icon={<Award className="h-4 w-4 text-muted-foreground" />} value={completedSkills} description="Skills mastered" color="text-green-600" />
+          <StatisticCard text="In Progress Skills" icon={<Target className="h-4 w-4 text-muted-foreground" />} value={inProgressSkills} description="Skills currently learning" color="text-blue-600" />
+          <StatisticCard text="Average Progress" icon={<TrendingUp className="h-4 w-4 text-muted-foreground" />} value={averageProgress + "%"} description="Average progress across skills" />
 
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Completed</CardTitle>
-              <Award className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-green-600">{completedSkills}</div>
-              <p className="text-xs text-muted-foreground">
-                Skills mastered
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">In Progress</CardTitle>
-              <Target className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-blue-600">{inProgressSkills}</div>
-              <p className="text-xs text-muted-foreground">
-                Currently learning
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Avg Progress</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{averageProgress}%</div>
-              <p className="text-xs text-muted-foreground">
-                Overall completion
-              </p>
-            </CardContent>
-          </Card>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
