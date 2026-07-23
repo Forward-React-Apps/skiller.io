@@ -17,21 +17,11 @@ import { Plus, Trash2, Save, ArrowLeft, Target, Calendar, BookOpen, Palette } fr
 import type { Skill, SkillCategory, Milestone } from "@/types/skill"
 import { CustomAlertDialog } from "../components/alert-dialog"
 
-// Mock categories (same as dashboard)
-const mockCategories: SkillCategory[] = [
-  { id: '1', name: 'Frontend Development', color: '#3B82F6' },
-  { id: '2', name: 'Backend Development', color: '#10B981' },
-  { id: '3', name: 'Programming Languages', color: '#F59E0B' },
-  { id: '4', name: 'Database', color: '#8B5CF6' },
-  { id: '5', name: 'Design', color: '#EF4444' },
-  { id: '6', name: 'DevOps', color: '#6B7280' },
-]
-
 function Creation() {
   const navigate = useNavigate()
   const location = useLocation()
   const [, setSkills] = useLocalStorage<Skill[]>('user-skills', [])
-  const [categories, setCategories] = useLocalStorage<SkillCategory[]>('skill-categories', mockCategories)
+  const [categories, setCategories] = useLocalStorage<SkillCategory[]>('skill-categories', [])
   
   // Check if we're editing an existing skill
   const editingSkill = location.state?.skill as Skill | undefined
