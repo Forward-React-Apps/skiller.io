@@ -265,7 +265,7 @@ function Roadmap() {
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border" />
           
           <div className="space-y-8">
-            {skillsToShow.map((skill, index) => {
+            {skillsToShow.map((skill) => {
               return (
                 <SkillRoadmap key={skill.id} skill={skill} categories={categories} formatShortDate={formatShortDate} getDaysUntilTarget={getDaysUntilTarget} />
               )

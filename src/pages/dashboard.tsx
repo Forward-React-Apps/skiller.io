@@ -2,7 +2,6 @@ import { AppBar } from "../components/app-bar"
 import { SkillCard } from "../components/skill-card"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import {
   Select,
   SelectContent,
@@ -12,7 +11,7 @@ import {
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { useLocalStorage } from "@/hooks/useLocalStorage"
-import { Plus, BookOpen, Target, TrendingUp, Award, Search, Filter, SortAsc } from "lucide-react"
+import { Plus, BookOpen, Target, Search, Filter, SortAsc } from "lucide-react"
 import { useNavigate } from "react-router"
 
 import type { Skill, SkillCategory } from "@/types/skill"
@@ -33,7 +32,7 @@ const mockSkills: Skill[] = []
 function Dashboard() {
   const navigate = useNavigate()
   const [skills, setSkills] = useLocalStorage<Skill[]>('user-skills', mockSkills)
-  const [categories, setCategories] = useLocalStorage<SkillCategory[]>('skill-categories', mockCategories)
+  const [categories] = useLocalStorage<SkillCategory[]>('skill-categories', mockCategories)
   
   // Filter and sort states
   const [searchTerm, setSearchTerm] = useLocalStorage<string>('skills-search', '')

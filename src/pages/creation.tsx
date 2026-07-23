@@ -30,7 +30,7 @@ const mockCategories: SkillCategory[] = [
 function Creation() {
   const navigate = useNavigate()
   const location = useLocation()
-  const [skills, setSkills] = useLocalStorage<Skill[]>('user-skills', [])
+  const [, setSkills] = useLocalStorage<Skill[]>('user-skills', [])
   const [categories, setCategories] = useLocalStorage<SkillCategory[]>('skill-categories', mockCategories)
   
   // Check if we're editing an existing skill
